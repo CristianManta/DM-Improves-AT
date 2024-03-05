@@ -1,0 +1,4 @@
+*.pyc
+edm_data
+dataset-data
+trained_models

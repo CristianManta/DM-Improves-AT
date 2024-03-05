@@ -1,5 +1,5 @@
 # Better Diffusion Models Further Improve Adversarial Training
-
+NOTE: This is a modified repository of the [original one](https://github.com/wzekai99/DM-Improves-AT) for a course project on adversarial machine learning.
 Code for the paper [Better Diffusion Models Further Improve Adversarial Training](https://arxiv.org/pdf/2302.04638.pdf) (ICML 2023).
 
 
@@ -13,6 +13,7 @@ This project is tested under the following environment settings:
 - Python: 3.9.5
 - PyTorch: 1.8.0
 - Torchvision: 0.9.0
+- Pandas: 1.5.0
 
 ## Acknowledgement
 The adversarial training codes are modifed based on the [PyTorch implementation](https://github.com/imrahulr/adversarial_robustness_pytorch) of [Rebuffi et al., 2021](https://arxiv.org/abs/2103.01946). The generation codes are modifed based on the [official implementation of EDM](https://github.com/NVlabs/edm). For data generation, please refer to [`edm/README.md`](./edm) for more details.  

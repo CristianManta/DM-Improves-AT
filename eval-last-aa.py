@@ -9,6 +9,10 @@ import shutil
 
 import os
 import numpy as np
+
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 import pandas as pd
 
 import torch
