@@ -78,7 +78,7 @@ class WATrainer(Trainer):
         self.init_scheduler(num_epochs)
     
     
-    def train(self, dataloader, epoch=0, adversarial=False, verbose=False):
+    def train(self, dataloader, epoch=0, adversarial=False, verbose=True):
         """
         Run one epoch of training.
         """

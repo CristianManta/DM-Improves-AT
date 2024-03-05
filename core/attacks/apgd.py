@@ -24,7 +24,7 @@ class APGD():
         assert ord in [2, np.inf], 'Only ord=inf or ord=2 are supported!'
         
         norm = 'Linf' if ord == np.inf else 'L2'
-        self.apgd = APGDAttack(predict, n_restarts=n_restarts, n_iter=nb_iter, verbose=False, eps=eps, norm=norm, 
+        self.apgd = APGDAttack(predict, n_restarts=n_restarts, n_iter=nb_iter, verbose=True, eps=eps, norm=norm, 
                                eot_iter=1, rho=.75, seed=seed, device=device)
         self.apgd.loss = loss_fn
 

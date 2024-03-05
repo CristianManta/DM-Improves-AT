@@ -100,7 +100,7 @@ class Trainer(object):
             self.scheduler = None
     
     
-    def train(self, dataloader, epoch=0, adversarial=False, verbose=False):
+    def train(self, dataloader, epoch=0, adversarial=False, verbose=True):
         """
         Run one epoch of training.
         """
