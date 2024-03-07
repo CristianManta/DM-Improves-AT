@@ -2,3 +2,6 @@
 edm_data
 dataset-data
 trained_models
+slurm
+bookmarks.json
+*.out
