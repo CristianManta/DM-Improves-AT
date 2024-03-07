@@ -143,7 +143,7 @@ class CropShift(tc.nn.Module):
         else:
             strength = tc.randint(self.low, self.high, (1,)).item()
         
-        w, h = F.get_image_size(img)
+        w, h = F._get_image_size(img)
         crop_x = tc.randint(0, strength+1, (1,)).item()
         crop_y = strength - crop_x
         crop_w, crop_h = w - crop_x, h - crop_y

@@ -44,7 +44,7 @@ table7_only_real_data () {
 
     # Other parameters
     epochs="200"
-    unsup_fraction="0.0" # NOTE: This is the fraction of generated data per batch
+    unsup_fraction="0.002" # NOTE: This is the fraction of generated data per batch. Must not use exactly 0.0 since that would cause an error.
     augments=("none" "base" "cutout" "autoaugment" "randaugment" "idbh")
 
     for augment in "${augments[@]}"
@@ -80,7 +80,7 @@ table7_only_generated_data () {
 
     # Other parameters
     epochs="200"
-    unsup_fraction="1.0" # NOTE: This is the fraction of generated data per batch
+    unsup_fraction="0.999" # NOTE: This is the fraction of generated data per batch. Must not use exactly 1.0 since that would cause an error.
     augments=("none" "base" "cutout" "autoaugment" "randaugment" "idbh")
 
     for augment in "${augments[@]}"
