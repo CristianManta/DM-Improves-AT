@@ -105,7 +105,42 @@ table7_only_generated_data () {
     rm temprun.sh
 }
 
+table7_mix_generated_real () {
+    # Data
+    data="cifar10s"
+    aux_data_filename="edm_data/cifar10-1m.npz"
 
+    # Model
+    experiment_name_base="table7_mix_generated_real"
+    model="wrn-28-10-swish"
 
-table7_only_real_data
-table7_only_generated_data
+    # Other parameters
+    epochs="200"
+    unsup_fraction="0.7" # NOTE: This is the fraction of generated data per batch.
+    augments=("none" "base" "cutout" "autoaugment" "randaugment" "idbh")
+
+    for augment in "${augments[@]}"
+    do
+        experiment_name="$experiment_name_base-augment-$augment"
+
+        job_setup    
+        echo "python train-wa.py --data-dir dataset-data --log-dir trained_models --desc $experiment_name --data $data --batch-size 512 --model $model --num-adv-epochs $epochs --lr 0.2 --beta 5.0 --unsup-fraction $unsup_fraction --aux-data-filename $aux_data_filename --ls 0.1 --augment $augment" >> temprun.sh
+
+        eval "sbatch temprun.sh"
+        rm temprun.sh
+    done
+
+    # CutMix has to be treated separately because it's a separate boolean flag
+    augment="cutmix"
+    experiment_name="$experiment_name_base-augment-$augment"
+
+    job_setup    
+    echo "python train-wa.py --data-dir dataset-data --log-dir trained_models --desc $experiment_name --data $data --batch-size 512 --model $model --num-adv-epochs $epochs --lr 0.2 --beta 5.0 --unsup-fraction $unsup_fraction --aux-data-filename $aux_data_filename --ls 0.1 --CutMix" >> temprun.sh
+
+    eval "sbatch temprun.sh"
+    rm temprun.sh
+}
+
+# table7_only_real_data
+# table7_only_generated_data
+table7_mix_generated_real
