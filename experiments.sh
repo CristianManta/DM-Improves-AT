@@ -3,7 +3,7 @@
 echo 'Submitting SBATCH jobs...'
 
 ################### Define a few global run parameters #######################
-time="25:00:00"
+time="27:00:00"
 ram="16G" # Amount of RAM
 vram="32gb" # Amount of GPU memory
 num_gpus="4" # Number of GPUs
@@ -59,20 +59,20 @@ table7_only_real_data () {
     done
 
     # CutMix has to be treated separately because it's a separate boolean flag
-    augment="cutmix"
-    experiment_name="$experiment_name_base-augment-$augment"
+    # augment="cutmix"
+    # experiment_name="$experiment_name_base-augment-$augment"
 
-    job_setup    
-    echo "python train-wa.py --data-dir dataset-data --log-dir trained_models --desc $experiment_name --data $data --batch-size 512 --model $model --num-adv-epochs $epochs --lr 0.2 --beta 5.0 --unsup-fraction $unsup_fraction --aux-data-filename $aux_data_filename --ls 0.1 --CutMix" >> temprun.sh
+    # job_setup    
+    # echo "python train-wa.py --data-dir dataset-data --log-dir trained_models --desc $experiment_name --data $data --batch-size 512 --model $model --num-adv-epochs $epochs --lr 0.2 --beta 5.0 --unsup-fraction $unsup_fraction --aux-data-filename $aux_data_filename --ls 0.1 --CutMix" >> temprun.sh
 
-    eval "sbatch temprun.sh"
-    rm temprun.sh
+    # eval "sbatch temprun.sh"
+    # rm temprun.sh
 }
 
 table7_only_generated_data () {
     # Data
     data="cifar10s"
-    aux_data_filename="edm_data/cifar10-1m.npz"
+    aux_data_filename="edm_data/cifar10-48k.npz"
 
     # Model
     experiment_name_base="table7_only_generated_data"
@@ -95,14 +95,14 @@ table7_only_generated_data () {
     done
 
     # CutMix has to be treated separately because it's a separate boolean flag
-    augment="cutmix"
-    experiment_name="$experiment_name_base-augment-$augment"
+    # augment="cutmix"
+    # experiment_name="$experiment_name_base-augment-$augment"
 
-    job_setup    
-    echo "python train-wa.py --data-dir dataset-data --log-dir trained_models --desc $experiment_name --data $data --batch-size 512 --model $model --num-adv-epochs $epochs --lr 0.2 --beta 5.0 --unsup-fraction $unsup_fraction --aux-data-filename $aux_data_filename --ls 0.1 --CutMix" >> temprun.sh
+    # job_setup    
+    # echo "python train-wa.py --data-dir dataset-data --log-dir trained_models --desc $experiment_name --data $data --batch-size 512 --model $model --num-adv-epochs $epochs --lr 0.2 --beta 5.0 --unsup-fraction $unsup_fraction --aux-data-filename $aux_data_filename --ls 0.1 --CutMix" >> temprun.sh
 
-    eval "sbatch temprun.sh"
-    rm temprun.sh
+    # eval "sbatch temprun.sh"
+    # rm temprun.sh
 }
 
 table7_mix_generated_real () {
@@ -131,16 +131,16 @@ table7_mix_generated_real () {
     done
 
     # CutMix has to be treated separately because it's a separate boolean flag
-    augment="cutmix"
-    experiment_name="$experiment_name_base-augment-$augment"
+    # augment="cutmix"
+    # experiment_name="$experiment_name_base-augment-$augment"
 
-    job_setup    
-    echo "python train-wa.py --data-dir dataset-data --log-dir trained_models --desc $experiment_name --data $data --batch-size 512 --model $model --num-adv-epochs $epochs --lr 0.2 --beta 5.0 --unsup-fraction $unsup_fraction --aux-data-filename $aux_data_filename --ls 0.1 --CutMix" >> temprun.sh
+    # job_setup    
+    # echo "python train-wa.py --data-dir dataset-data --log-dir trained_models --desc $experiment_name --data $data --batch-size 512 --model $model --num-adv-epochs $epochs --lr 0.2 --beta 5.0 --unsup-fraction $unsup_fraction --aux-data-filename $aux_data_filename --ls 0.1 --CutMix" >> temprun.sh
 
-    eval "sbatch temprun.sh"
-    rm temprun.sh
+    # eval "sbatch temprun.sh"
+    # rm temprun.sh
 }
 
 # table7_only_real_data
-# table7_only_generated_data
-table7_mix_generated_real
+table7_only_generated_data
+# table7_mix_generated_real

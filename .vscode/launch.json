@@ -11,7 +11,7 @@
             "program": "./train-wa.py",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "args": "--data-dir dataset-data --log-dir trained_models --desc debugging2 --data cifar10s --batch-size 512 --model wrn-28-10-swish --num-adv-epochs 1 --lr 0.2 --beta 5.0 --unsup-fraction 0.999 --aux-data-filename edm_data/cifar10-1m.npz --ls 0.1 --augment none"
+            "args": "--data-dir dataset-data --log-dir trained_models --desc debugging1 --data cifar10s --batch-size 512 --model wrn-28-10-swish --num-adv-epochs 1 --lr 0.2 --beta 5.0 --unsup-fraction 0.999 --aux-data-filename edm_data/cifar10-1m.npz --ls 0.1 --augment none"
         }
     ]
 }
